@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Built-By: aditya
+version: 0.4.1
+Build-Jdk: 1.8.0_141
+Created-By: Maven Integration for Eclipse
+
