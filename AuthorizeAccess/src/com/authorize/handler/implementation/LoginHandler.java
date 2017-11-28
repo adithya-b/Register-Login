@@ -1,20 +1,22 @@
-package com.gmp.authorize.handler.implementation;
+package com.authorize.handler.implementation;
 
 import java.util.Map;
 
-import com.gmp.authorize.handler.RequestHandler;
-import com.gmp.authorize.handler.HandlerResponse;
-import com.gmp.authorize.handler.HandlerResponse.Status;
-import com.gmp.authorize.json.LoginInput;
-import com.gmp.authorize.Hash.HashingHandler;
-import com.gmp.authorize.cryptomodule.DecryptionHandler;
-import com.gmp.authorize.db.DbFacade;
+import com.authorize.Hash.HashingHandler;
+import com.authorize.cryptomodule.DecryptionHandler;
+import com.authorize.db.DbFacade;
+import com.authorize.handler.HandlerResponse;
+import com.authorize.handler.RequestHandler;
+import com.authorize.handler.HandlerResponse.Status;
+import com.authorize.json.LoginInput;
 import com.google.gson.Gson;
 
-public class SignUpHandler implements RequestHandler {
+public class LoginHandler implements RequestHandler {
 
 	public HandlerResponse handlePost(String metaData, Map<String, String[]> parameters) {
+		System.out.println("got into login handler");
 		LoginInput input = new Gson().fromJson(metaData, LoginInput.class);
+		System.out.println("getting json is done");
 		String mailId = input.getMailId();
 		String cryptoPassword = input.getPassword();
 		if (mailId == null || cryptoPassword == null || mailId.equals("") || cryptoPassword.equals(""))
@@ -22,16 +24,16 @@ public class SignUpHandler implements RequestHandler {
 		String actualPassword = DecryptionHandler.decryptPassword(cryptoPassword);
 		String hashedPassword = HashingHandler.getHashedForm(actualPassword);
 		boolean result = DbFacade.checkUserEntry(mailId, null);
-		if (result == true)
-			return getResponseObject(Status.FAILURE, "User Already Exists", 200);
-		result = DbFacade.addUserEntry(mailId, hashedPassword);
 		if (result == false)
-			return getResponseObject(Status.FAILURE, "Unable to Process request Please try again after sometime", 417);
-		return getResponseObject(Status.SUCCESS, "User Signup Successfull", 200);
-
+			return getResponseObject(Status.FAILURE, "User Does not Exist Please sign in", 406);
+		result = DbFacade.checkUserEntry(mailId, hashedPassword);
+		if (result == false)
+			return getResponseObject(Status.FAILURE, "Wrong Password please try again", 403);
+		return getResponseObject(Status.SUCCESS, "User Login Successfull", 200);
 	}
 
 	public HandlerResponse handleGet(Map<String, String[]> parameters) {
+
 		return getResponseObject(Status.FAILURE, "", 405);
 	}
 

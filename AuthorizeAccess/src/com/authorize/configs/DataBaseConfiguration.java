@@ -1,4 +1,4 @@
-package com.gmp.authorize.configs;
+package com.authorize.configs;
 
 public class DataBaseConfiguration {
 	private static final String URL = "jdbc:mysql://localhost/Registrations";

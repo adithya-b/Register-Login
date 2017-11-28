@@ -1,4 +1,4 @@
-package com.gmp.authorize.servlets;
+package com.authorize.servlets;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,22 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gmp.authorize.handler.RequestHandler;
-import com.gmp.authorize.handler.RequestHandlerFactory;
-import com.gmp.authorize.handler.HandlerResponse;
-import com.gmp.authorize.handler.HandlerResponse.Status;
+import com.authorize.handler.HandlerResponse;
+import com.authorize.handler.RequestHandler;
+import com.authorize.handler.RequestHandlerFactory;
+import com.authorize.handler.HandlerResponse.Status;
 
 /**
  * Servlet implementation class ServeOnFlyServlet
  */
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/signup")
+public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Default constructor.
 	 */
-	public LoginServlet() {
+	public SignUpServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 	}
@@ -36,7 +36,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		try {
 			StringBuilder sb = new StringBuilder();
@@ -50,12 +49,12 @@ public class LoginServlet extends HttpServlet {
 				reader.close();
 			}
 			String content = sb.toString();
-			System.out.println("starting the login servlet");
-			RequestHandler handler = RequestHandlerFactory.getInstance().getHandler("login");
+			System.out.println("starting the signup servlet");
+			RequestHandler handler = RequestHandlerFactory.getInstance().getHandler("signup");
 			System.out.println("got the handler");
 			HandlerResponse handlerResponse = handler.handlePost(content, request.getParameterMap());
-			response.getWriter().append(handlerResponse.getMessage());
 			response.setStatus(handlerResponse.getStatusCode());
+			response.getWriter().append(handlerResponse.getMessage());
 			return;
 		} catch (Exception e) {
 			response.sendError(400, "Bad request");

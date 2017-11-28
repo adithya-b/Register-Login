@@ -1,4 +1,4 @@
-package com.gmp.authorize.Hash;
+package com.authorize.Hash;
 
 public class HashingHandler {
 

@@ -1,4 +1,4 @@
-package com.gmp.authorize.configs;
+package com.authorize.configs;
 
 public class EncryptionConfiguration {
 	private static final String SHAREDKEY = "dummy";

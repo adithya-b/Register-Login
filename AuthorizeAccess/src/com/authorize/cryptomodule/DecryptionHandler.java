@@ -1,6 +1,6 @@
-package com.gmp.authorize.cryptomodule;
+package com.authorize.cryptomodule;
 
-import com.gmp.authorize.configs.EncryptionConfiguration;
+import com.authorize.configs.EncryptionConfiguration;
 
 public class DecryptionHandler {
 

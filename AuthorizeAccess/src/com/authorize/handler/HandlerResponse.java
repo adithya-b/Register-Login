@@ -1,4 +1,4 @@
-package com.gmp.authorize.handler;
+package com.authorize.handler;
 
 public interface HandlerResponse {
 	public static enum Status {

@@ -1,4 +1,4 @@
-package com.gmp.authorize.db;
+package com.authorize.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 import java.sql.Statement;
 
-import com.gmp.authorize.configs.DataBaseConfiguration;
-import com.gmp.authorize.constants.Constants;
+import com.authorize.configs.DataBaseConfiguration;
+import com.authorize.constants.Constants;
 
 public class SQLDbHandler implements DbInterface {
 

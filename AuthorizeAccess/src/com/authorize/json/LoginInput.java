@@ -1,4 +1,4 @@
-package com.gmp.authorize.json;
+package com.authorize.json;
 
 public class LoginInput {
 	private String mailid;

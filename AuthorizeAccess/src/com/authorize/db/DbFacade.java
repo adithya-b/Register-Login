@@ -1,9 +1,9 @@
-package com.gmp.authorize.db;
+package com.authorize.db;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.gmp.authorize.configs.DataBaseConfiguration;
+import com.authorize.configs.DataBaseConfiguration;
 
 public class DbFacade {
 

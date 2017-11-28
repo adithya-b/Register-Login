@@ -1,4 +1,4 @@
-package com.gmp.authorize.constants;
+package com.authorize.constants;
 
 public class Constants {
 	public static final String TYPE = "type";

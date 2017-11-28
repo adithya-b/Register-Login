@@ -1,4 +1,4 @@
-package com.gmp.authorize.db;
+package com.authorize.db;
 
 public interface DbInterface {
 
