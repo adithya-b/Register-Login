@@ -2,7 +2,7 @@
 
 This is a simple login/sign up module open for extensions.
 
-The db handler implemented is for sql db.
+The database handler currently implemented is customized for sql db.
 
 Please use maven file to generate the war file.
 
